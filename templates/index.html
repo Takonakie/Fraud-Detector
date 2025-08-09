@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraud Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Transaction Fraud Detection System</h1>
+        <p>Enter the transaction details to predict if it's normal or fraudulent.</p>
+
+        <form id="prediction-form">
+            <div class="form-group">
+                <label for="transaction_amount">Transaction Amount</label>
+                <input type="number" step="0.01" id="transaction_amount" placeholder="e.g., 99.50" required>
+            </div>
+            <div class="form-group">
+                <label for="customer_age">Customer Age</label>
+                <input type="number" id="customer_age" placeholder="e.g., 35" required>
+            </div>
+            <div class="form-group">
+                <label for="transaction_duration">Transaction Duration (seconds)</label>
+                <input type="number" id="transaction_duration" placeholder="e.g., 81" required>
+            </div>
+            <div class="form-group">
+                <label for="login_attempts">Login Attempts</label>
+                <input type="number" id="login_attempts" value="1" required>
+            </div>
+            <div class="form-group">
+                <label for="account_balance">Account Balance</label>
+                <input type="number" step="0.01" id="account_balance" placeholder="e.g., 5000.00" required>
+            </div>
+            <div class="form-group">
+                <label>Transaction Type</label>
+                <select id="transaction_type" required>
+                    <option value="debit">Debit</option>
+                    <option value="credit">Credit (Not Debit)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Transaction Channel</label>
+                <select id="channel" required>
+                    <option value="online">Online</option>
+                    <option value="branch">Branch</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+             <div class="form-group">
+                <label>Customer Occupation</label>
+                <select id="occupation" required>
+                    <option value="engineer">Engineer</option>
+                    <option value="retired">Retired</option>
+                    <option value="student">Student</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <button type="submit">Predict</button>
+        </form>
+
+        <div id="result-container" class="hidden">
+            <h2>Prediction Result:</h2>
+            <p id="prediction-result"></p>
+            <p id="confidence-score"></p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
